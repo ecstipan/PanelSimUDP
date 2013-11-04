@@ -29,14 +29,14 @@ int port        = 6100;    // the destinat
 
 void writeArray() {
   String message = new String("");
-
   for (int y = 0; y< 16; y++) {
       for (int x = 0; x < 16 ; x++ ) {
         byte tempframe = 0x00;
-        tempframe += ((pixelFrame[x][y][0] & 0xE0) >> 1);
-        tempframe += ((pixelFrame[x][y][1] & 0xC0) >> 4);
-        tempframe += ((pixelFrame[x][y][2] & 0xC0) >> 6);
-        message += Byte.toString(tempframe);
+        tempframe |= byte((pixelFrame[x][y][0] & 0xE0) >> 1);
+        tempframe |= byte((pixelFrame[x][y][1] & 0xC0) >> 4);
+        tempframe |= byte((pixelFrame[x][y][2] & 0xC0) >> 6);
+        
+        message += new String(new byte[] {tempframe});
       }
     }
   udp.send(message, ip, port );
