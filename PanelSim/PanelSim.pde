@@ -24,7 +24,7 @@ Capture cam;
 byte[][][] pixelFrame = new byte[16][16][3];
 PImage bufferedImage;
 
-String ip       = "130.215.173.217";  // the remote IP address
+String ip       = "130.215.248.52";  // the remote IP address
 int port        = 6100;    // the destinat
 
 void writeArray() {
